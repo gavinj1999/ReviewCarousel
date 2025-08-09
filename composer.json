@@ -1,19 +1,29 @@
 {
-    "name": "rising5th/review-carousel",
-    "description": "A simple Magento plugin",
-    "type": "magento2-plugin",
-    "license": "OSL-3.0",
+    "name": "rising5th/reviewcarousel",
+    "description": "A responsive Google Reviews carousel for Magento 2",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "MIT"
+    ],
+    "require": {
+        "php": "~7.4|~8.1",
+        "magento/framework": "*",
+        "magento/module-cms": "*"
+    },
     "autoload": {
+        "files": [
+            "registration.php"
+        ],
         "psr-4": {
-            "Rising5th\\ReviewCarousel\\": "src/"
+            "Rising5th\\ReviewCarousel\\": ""
         }
     },
     "authors": [
         {
-            "name": "Gavin  Jones",
-            "email": "gavin.jones@rising5th.co.uk"
+            "name": "Gavin Jones",
+            "email": "gavin.jones@rising5th.co.uk",
+            "role": "Developer"
         }
-    ],
-    "minimum-stability": "stable",
-    "require": {}
+    ]
 }
