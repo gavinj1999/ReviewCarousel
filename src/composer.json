@@ -1,17 +1,17 @@
 {
-    "name": "gavin/review-carousel",
+    "name": "rising5th/review-carousel",
     "description": "A simple Magento plugin",
     "type": "magento2-plugin",
     "license": "OSL-3.0",
     "autoload": {
         "psr-4": {
-            "Gavin\\ReviewCarousel\\": "src/"
+            "Rising5th\\ReviewCarousel\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "gavinj1999",
-            "email": "gavinj2006@googlemail.com"
+            "name": "Gavin  Jones",
+            "email": "gavin.jones@rising5th.co.uk"
         }
     ],
     "minimum-stability": "stable",
