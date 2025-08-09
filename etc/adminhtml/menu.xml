@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vendor_ReviewCarousel::google_reviews" title="Google Reviews" module="Vendor_ReviewCarousel" sortOrder="10" parent="Magento_Backend::content" resource="Vendor_ReviewCarousel::google_reviews"/>
+        <add id="Vendor_ReviewCarousel::carousel" title="Review Carousels" module="Vendor_ReviewCarousel" sortOrder="10" parent="Vendor_ReviewCarousel::google_reviews" action="reviewcarousel/carousel" resource="Vendor_ReviewCarousel::carousel"/>
+        <add id="Vendor_ReviewCarousel::carousel_upload" title="Upload CSV" module="Vendor_ReviewCarousel" sortOrder="20" parent="Vendor_ReviewCarousel::google_reviews" action="reviewcarousel/carousel/upload" resource="Vendor_ReviewCarousel::carousel_upload"/>
+        <add id="Vendor_ReviewCarousel::carousel_managecsv" title="Manage CSV" module="Vendor_ReviewCarousel" sortOrder="30" parent="Vendor_ReviewCarousel::google_reviews" action="reviewcarousel/carousel/managecsv" resource="Vendor_ReviewCarousel::carousel_managecsv"/>
+    </menu>
+</config>

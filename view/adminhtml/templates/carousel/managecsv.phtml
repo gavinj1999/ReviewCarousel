@@ -1,0 +1,8 @@
+<?php
+/** @var \Vendor\ReviewCarousel\Block\Adminhtml\Carousel\ManageCsv $block */
+$logger = \Magento\Framework\App\ObjectManager::getInstance()->get(\Psr\Log\LoggerInterface::class);
+$logger->debug('Rendering managecsv.phtml');
+?>
+<div class="admin__data-grid-wrap">
+    <?= $block->getGridHtml() ?>
+</div>

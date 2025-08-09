@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="vendor_review_carousel" resource="default" engine="innodb" comment="Review Carousel Configurations">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Carousel Name"/>
+        <column xsi:type="varchar" name="default_ratings" nullable="true" length="255" comment="Default Ratings"/>
+        <column xsi:type="tinyint" name="exclude_no_text" nullable="false" default="1" comment="Exclude Reviews Without Text"/>
+        <column xsi:type="varchar" name="default_sort" nullable="true" length="50" comment="Default Sort"/>
+        <column xsi:type="varchar" name="bg_color" nullable="true" length="7" comment="Background Color"/>
+        <column xsi:type="varchar" name="text_color" nullable="true" length="7" comment="Text Color"/>
+        <column xsi:type="varchar" name="star_color" nullable="true" length="7" comment="Star Color"/>
+        <column xsi:type="varchar" name="featured_bg_color" nullable="true" length="7" comment="Featured Background Color"/>
+        <column xsi:type="int" name="star_size" nullable="true" comment="Star Size"/>
+        <column xsi:type="int" name="font_size" nullable="true" comment="Font Size"/>
+        <column xsi:type="varchar" name="font_family" nullable="true" length="50" comment="Font Family"/>
+        <column xsi:type="int" name="featured_review_index" nullable="true" comment="Featured Review Index"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="vendor_review_carousel_reviews" resource="default" engine="innodb" comment="Review Carousel Reviews">
+        <column xsi:type="int" name="review_id" unsigned="true" nullable="false" identity="true" comment="Review ID"/>
+        <column xsi:type="varchar" name="place_id" nullable="true" length="255" comment="Place ID"/>
+        <column xsi:type="varchar" name="place_name" nullable="true" length="255" comment="Place Name"/>
+        <column xsi:type="varchar" name="review_link" nullable="true" length="255" comment="Review Link"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Reviewer Name"/>
+        <column xsi:type="varchar" name="reviewer_id" nullable="true" length="255" comment="Reviewer ID"/>
+        <column xsi:type="varchar" name="reviewer_profile" nullable="true" length="255" comment="Reviewer Profile"/>
+        <column xsi:type="decimal" name="rating" nullable="true" scale="1" precision="3" comment="Rating"/>
+        <column xsi:type="text" name="review_text" nullable="true" comment="Review Text"/>
+        <column xsi:type="varchar" name="published_at" nullable="true" length="255" comment="Published At"/>
+        <column xsi:type="varchar" name="published_at_date" nullable="true" length="255" comment="Published At Date"/>
+        <column xsi:type="text" name="response_from_owner_text" nullable="true" comment="Response From Owner Text"/>
+        <column xsi:type="varchar" name="response_from_owner_ago" nullable="true" length="255" comment="Response From Owner Ago"/>
+        <column xsi:type="varchar" name="response_from_owner_date" nullable="true" length="255" comment="Response From Owner Date"/>
+        <column xsi:type="int" name="total_number_of_reviews_by_reviewer" nullable="true" comment="Total Reviews by Reviewer"/>
+        <column xsi:type="int" name="total_number_of_photos_by_reviewer" nullable="true" comment="Total Photos by Reviewer"/>
+        <column xsi:type="varchar" name="is_local_guide" nullable="true" length="255" comment="Is Local Guide"/>
+        <column xsi:type="text" name="review_translated_text" nullable="true" comment="Review Translated Text"/>
+        <column xsi:type="text" name="response_from_owner_translated_text" nullable="true" comment="Response From Owner Translated Text"/>
+        <column xsi:type="text" name="experience_details" nullable="true" comment="Experience Details"/>
+        <column xsi:type="text" name="review_photos" nullable="true" comment="Review Photos"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="review_id"/>
+        </constraint>
+    </table>
+</schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Vendor\ReviewCarousel\Block\Adminhtml\Carousel\Grid">
+        <arguments>
+            <argument name="collectionFactory" xsi:type="object">Vendor\ReviewCarousel\Model\ResourceModel\Carousel\CollectionFactory</argument>
+        </arguments>
+    </type>
+    <type name="Vendor\ReviewCarousel\Block\Adminhtml\Carousel\ManageCsv">
+        <arguments>
+            <argument name="collectionFactory" xsi:type="object">Vendor\ReviewCarousel\Model\ResourceModel\CarouselConfig\CollectionFactory</argument>
+        </arguments>
+    </type>
+</config>

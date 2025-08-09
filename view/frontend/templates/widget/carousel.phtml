@@ -1,0 +1,60 @@
+<?php
+/** @var \Vendor\ReviewCarousel\Block\Widget\ReviewCarouselWidget $block */
+$logger = \Magento\Framework\App\ObjectManager::getInstance()->get(\Psr\Log\LoggerInterface::class);
+$logger->debug('Rendering widget/carousel.phtml');
+$carousel = $block->getCarouselData();
+$reviews = $block->getReviews();
+?>
+<?php if ($carousel && $reviews): ?>
+    <?php
+    // Import Google Fonts based on font_family
+    $fontFamily = $block->escapeHtml($carousel->getFontFamily() ?: 'Arial');
+    $fontFamilyUrl = str_replace(' ', '+', $fontFamily);
+    ?>
+    <link href="https://fonts.googleapis.com/css2?family=<?= $fontFamilyUrl ?>&display=swap" rel="stylesheet">
+    <div class="review-carousel" style="
+        background-color: <?= $block->escapeHtml($carousel->getBgColor() ?: '#FFFFFF') ?>;
+        color: <?= $block->escapeHtml($carousel->getTextColor() ?: '#000000') ?>;
+        font-family: '<?= $fontFamily ?>', sans-serif;
+        font-size: <?= $block->escapeHtml($carousel->getFontSize() ?: 16) ?>px;" data-mage-init='{"Vendor_ReviewCarousel/carousel": {}}'>
+        <?php foreach ($reviews as $index => $review): ?>
+            <div class="review-item <?= $index + 1 == $carousel->getFeaturedReviewIndex() ? 'featured' : '' ?>"
+                 style="<?= $index + 1 == $carousel->getFeaturedReviewIndex() ? 'background-color: ' . $block->escapeHtml($carousel->getFeaturedBgColor() ?: '#FFFF00') . ';' : '' ?>">
+                <div class="review-rating">
+                    <?= $block->getStarHtml($review['rating']) ?>
+                </div>
+                <?php
+                $fullText = $block->escapeHtml($review['review_text']);
+                $words = preg_split('/\s+/', trim($fullText));
+                $truncatedText = implode(' ', array_slice($words, 0, 30));
+                $isTruncated = count($words) > 30;
+                ?>
+                <p class="review-text" style="padding:10px;" data-full-text="<?= $fullText ?>">
+                    <?= $truncatedText . ($isTruncated ? '...' : '') ?>
+                </p>
+                <p class="review-author"><strong><i><?= $block->escapeHtml($review['name']) ?></i></strong></p>
+                <p class="review-date"><strong><?= $block->escapeHtml($review['published_at']) ?></strong></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <style>
+        .review-carousel .review-star.full::before {
+            content: '★';
+            color: <?= $block->escapeHtml($carousel->getStarColor() ?: '#FF0000') ?>;
+            font-size: <?= $block->escapeHtml($carousel->getStarSize() ?: 20) ?>px;
+        }
+        .review-carousel .review-star.half::before {
+            content: '★';
+            color: <?= $block->escapeHtml($carousel->getStarColor() ?: '#FF0000') ?>;
+            font-size: <?= $block->escapeHtml($carousel->getStarSize() ?: 20) ?>px;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+        .review-carousel .review-star.empty::before {
+            content: '☆';
+            color: <?= $block->escapeHtml($carousel->getStarColor() ?: '#FF0000') ?>;
+            font-size: <?= $block->escapeHtml($carousel->getStarSize() ?: 20) ?>px;
+        }
+    </style>
+<?php else: ?>
+    <p>No reviews or carousel configuration found.</p>
+<?php endif; ?>

@@ -1,0 +1,73 @@
+<?php
+/** @var \Vendor\ReviewCarousel\Block\Adminhtml\Carousel\Edit $block */
+$logger = \Magento\Framework\App\ObjectManager::getInstance()->get(\Psr\Log\LoggerInterface::class);
+$logger->debug('Rendering edit.phtml with fields: name, default_ratings, exclude_no_text, default_sort, bg_color (color picker), text_color (color picker), star_color (color picker), featured_bg_color, star_size, font_size, font_family, featured_review_index');
+$carousel = $block->getCarousel();
+?>
+<form id="edit_form" action="<?= $block->getUrl('reviewcarousel/carousel/save') ?>" method="post">
+    <input type="hidden" name="form_key" value="<?= /* @noEscape */ $block->getFormKey() ?>"/>
+    <input type="hidden" name="id" value="<?= $block->escapeHtml($carousel->getData('id') ?: '') ?>"/>
+    <div class="admin__scope">
+        <div class="fieldset-wrapper">
+            <div class="fieldset-wrapper-title">
+                <span class="title"><?= __('Carousel Information') ?></span>
+            </div>
+            <table class="admin__table-primary">
+                <tr>
+                    <th scope="row"><label for="name"><?= __('Name') ?></label></th>
+                    <td><input type="text" name="name" id="name" value="<?= $block->escapeHtml($carousel->getData('name') ?: '') ?>" class="input-text admin__control-text" required/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="default_ratings"><?= __('Default Ratings') ?></label></th>
+                    <td><input type="text" name="default_ratings" id="default_ratings" value="<?= $block->escapeHtml($carousel->getData('default_ratings') ?: '') ?>" class="input-text admin__control-text" placeholder="e.g., 4.5"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="exclude_no_text"><?= __('Exclude Reviews Without Text') ?></label></th>
+                    <td>
+                        <select name="exclude_no_text" id="exclude_no_text" class="admin__control-select">
+                            <option value="0" <?= $carousel->getData('exclude_no_text') == 0 ? 'selected' : '' ?>><?= __('No') ?></option>
+                            <option value="1" <?= $carousel->getData('exclude_no_text') == 1 ? 'selected' : '' ?>><?= __('Yes') ?></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="default_sort"><?= __('Default Sort') ?></label></th>
+                    <td><input type="text" name="default_sort" id="default_sort" value="<?= $block->escapeHtml($carousel->getData('default_sort') ?: '') ?>" class="input-text admin__control-text" placeholder="e.g., rating_desc"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="bg_color"><?= __('Background Color') ?></label></th>
+                    <td><input type="color" name="bg_color" id="bg_color" value="<?= $block->escapeHtml($carousel->getData('bg_color') ?: '#FFFFFF') ?>" class="input-color admin__control-color"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="text_color"><?= __('Text Color') ?></label></th>
+                    <td><input type="color" name="text_color" id="text_color" value="<?= $block->escapeHtml($carousel->getData('text_color') ?: '#000000') ?>" class="input-color admin__control-color"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="star_color"><?= __('Star Color') ?></label></th>
+                    <td><input type="color" name="star_color" id="star_color" value="<?= $block->escapeHtml($carousel->getData('star_color') ?: '#FF0000') ?>" class="input-color admin__control-color"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="featured_bg_color"><?= __('Featured Background Color') ?></label></th>
+                    <td><input type="text" name="featured_bg_color" id="featured_bg_color" value="<?= $block->escapeHtml($carousel->getData('featured_bg_color') ?: '') ?>" class="input-text admin__control-text" placeholder="e.g., #FFFF00"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="star_size"><?= __('Star Size') ?></label></th>
+                    <td><input type="number" name="star_size" id="star_size" value="<?= $block->escapeHtml($carousel->getData('star_size') ?: '') ?>" class="input-text admin__control-text" min="1" placeholder="e.g., 20"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="font_size"><?= __('Font Size') ?></label></th>
+                    <td><input type="number" name="font_size" id="font_size" value="<?= $block->escapeHtml($carousel->getData('font_size') ?: '') ?>" class="input-text admin__control-text" min="1" placeholder="e.g., 16"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="font_family"><?= __('Font Family') ?></label></th>
+                    <td><input type="text" name="font_family" id="font_family" value="<?= $block->escapeHtml($carousel->getData('font_family') ?: '') ?>" class="input-text admin__control-text" placeholder="e.g., Arial"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="featured_review_index"><?= __('Featured Review Index') ?></label></th>
+                    <td><input type="number" name="featured_review_index" id="featured_review_index" value="<?= $block->escapeHtml($carousel->getData('featured_review_index') ?: '') ?>" class="input-text admin__control-text" min="0" placeholder="e.g., 1"/></td>
+                </tr>
+            </table>
+            <button type="submit" class="action-primary"><?= __('Save Carousel') ?></button>
+        </div>
+    </div>
+</form>

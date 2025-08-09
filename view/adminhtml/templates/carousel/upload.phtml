@@ -1,0 +1,27 @@
+<?php
+/** @var \Vendor\ReviewCarousel\Block\Adminhtml\Carousel\Upload $block */
+$logger = \Magento\Framework\App\ObjectManager::getInstance()->get(\Psr\Log\LoggerInterface::class);
+$logger->debug('Rendering upload.phtml');
+?>
+<form id="upload_form" action="<?= $block->getUrl('reviewcarousel/carousel/uploadsave') ?>" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="form_key" value="<?= /* @noEscape */ $block->getFormKey() ?>"/>
+    <div class="admin__scope">
+        <div class="fieldset-wrapper">
+            <div class="fieldset-wrapper-title">
+                <span class="title"><?= __('Upload Review CSV') ?></span>
+            </div>
+            <table class="admin__table-primary">
+                <tr>
+                    <th scope="row"><label for="csv_file"><?= __('CSV File') ?></label></th>
+                    <td>
+                        <input type="file" name="csv_file" id="csv_file" accept=".csv" class="input-file admin__control-file" required/>
+                        <?php if ($currentFilePath = $block->getCurrentFilePath()): ?>
+                            <p>Current file: <?= $block->escapeHtml($currentFilePath) ?></p>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="action-primary"><?= __('Upload CSV') ?></button>
+        </div>
+    </div>
+</form>

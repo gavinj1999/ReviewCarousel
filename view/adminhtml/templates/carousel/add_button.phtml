@@ -1,0 +1,10 @@
+<?php
+/** @var \Magento\Backend\Block\Template $block */
+$logger = \Magento\Framework\App\ObjectManager::getInstance()->get(\Psr\Log\LoggerInterface::class);
+$logger->debug('Rendering add_button.phtml');
+?>
+<div class="admin__action">
+    <a class="action-primary action-add" href="<?= $block->getUrl('reviewcarousel/carousel/new') ?>">
+        <span><?= __('Add New Carousel') ?></span>
+    </a>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="vendor_review_carousel" class="Vendor\ReviewCarousel\Block\Widget\ReviewCarouselWidget" is_email_compatible="0">
+        <label>Google Reviews Carousel</label>
+        <description>Displays a responsive carousel of Google reviews</description>
+        <parameters>
+            <parameter name="carousel_id" xsi:type="select" required="true" source_model="Vendor\ReviewCarousel\Model\Carousel\Source\CarouselList" visible="true">
+                <label>Carousel Configuration</label>
+                <description>Select the carousel configuration to display</description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
